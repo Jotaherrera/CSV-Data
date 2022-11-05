@@ -9,3 +9,4 @@ C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.csproj.Generat
 C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.csproj.CoreCompileInputs.cache
 C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.exe
 C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.pdb
+C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.frmCSVDB.resources

@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace CSVData
 {
-    public partial class CSVDB : Form
+    public partial class frmCSVDB : Form
     {
-        public CSVDB()
+        public frmCSVDB()
         {
             InitializeComponent();
         }
+
     }
 }
