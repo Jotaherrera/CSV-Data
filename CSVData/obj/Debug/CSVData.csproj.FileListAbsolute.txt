@@ -3,7 +3,6 @@ C:\Users\juanh\Documents\Coding\CSVData\CSVData\bin\Debug\CSVData.exe
 C:\Users\juanh\Documents\Coding\CSVData\CSVData\bin\Debug\CSVData.pdb
 C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.csproj.AssemblyReference.cache
 C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.csproj.SuggestedBindingRedirects.cache
-C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.frmPrincipal.resources
 C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.Properties.Resources.resources
 C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.csproj.GenerateResource.cache
 C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.csproj.CoreCompileInputs.cache

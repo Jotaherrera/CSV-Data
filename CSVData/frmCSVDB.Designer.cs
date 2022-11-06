@@ -42,14 +42,14 @@
             // 
             this.rtbCSV.Location = new System.Drawing.Point(255, 56);
             this.rtbCSV.Name = "rtbCSV";
-            this.rtbCSV.Size = new System.Drawing.Size(860, 360);
+            this.rtbCSV.Size = new System.Drawing.Size(860, 276);
             this.rtbCSV.TabIndex = 0;
             this.rtbCSV.Text = "";
             // 
             // dgvCSV
             // 
             this.dgvCSV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCSV.Location = new System.Drawing.Point(255, 444);
+            this.dgvCSV.Location = new System.Drawing.Point(255, 362);
             this.dgvCSV.Name = "dgvCSV";
             this.dgvCSV.RowHeadersWidth = 62;
             this.dgvCSV.RowTemplate.Height = 28;
@@ -106,7 +106,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1143, 824);
+            this.ClientSize = new System.Drawing.Size(1143, 833);
             this.Controls.Add(this.lblPath);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSaveLocal);
