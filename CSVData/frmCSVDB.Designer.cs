@@ -41,7 +41,7 @@
             // rtbCSV
             // 
             this.rtbCSV.Location = new System.Drawing.Point(170, 36);
-            this.rtbCSV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rtbCSV.Margin = new System.Windows.Forms.Padding(2);
             this.rtbCSV.Name = "rtbCSV";
             this.rtbCSV.Size = new System.Drawing.Size(575, 181);
             this.rtbCSV.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             this.dgvCSV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCSV.Location = new System.Drawing.Point(170, 235);
-            this.dgvCSV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvCSV.Margin = new System.Windows.Forms.Padding(2);
             this.dgvCSV.Name = "dgvCSV";
             this.dgvCSV.RowHeadersWidth = 62;
             this.dgvCSV.RowTemplate.Height = 28;
@@ -61,7 +61,7 @@
             // btnImport
             // 
             this.btnImport.Location = new System.Drawing.Point(25, 119);
-            this.btnImport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(2);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(113, 40);
             this.btnImport.TabIndex = 2;
@@ -71,7 +71,7 @@
             // btnSaveLocal
             // 
             this.btnSaveLocal.Location = new System.Drawing.Point(25, 260);
-            this.btnSaveLocal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSaveLocal.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveLocal.Name = "btnSaveLocal";
             this.btnSaveLocal.Size = new System.Drawing.Size(113, 40);
             this.btnSaveLocal.TabIndex = 4;
@@ -82,12 +82,13 @@
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(25, 330);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(113, 40);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // lblPath
             // 
@@ -123,7 +124,7 @@
             this.Controls.Add(this.dgvCSV);
             this.Controls.Add(this.rtbCSV);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmCSVDB";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CSVDB";

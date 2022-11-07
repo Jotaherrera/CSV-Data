@@ -103,5 +103,31 @@ namespace CSVData
                 }
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show($"Do you want to delete the file?", "File status", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    rtbCSV.Clear();
+                    dgvCSV.Rows.Clear();
+                    dgvCSV.Columns.Clear();
+                    dgvCSV.Refresh();
+
+                    myStream.Close();
+                    File.Delete(strFileName);
+                    strFileName = "";
+                    lblPath.Text = strFileName;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"You have not opened any file. Open a file and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+        }
     }
 }
