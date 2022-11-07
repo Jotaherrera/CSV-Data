@@ -81,5 +81,27 @@ namespace CSVData
 
             }
         }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Comma Separated Value| *.csv";
+            openFileDialog.DefaultExt = "csv";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = openFileDialog.OpenFile()) != null)
+                {
+                    strFileName = openFileDialog.FileName;
+                    lblPath.Text = strFileName;
+
+                    createDataGrid();
+
+                    rtbCSV.Text = File.ReadAllText(strFileName);
+                    myStream.Close();
+
+                }
+            }
+        }
     }
 }

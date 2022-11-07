@@ -9,3 +9,14 @@ C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.csproj.CoreCom
 C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.exe
 C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.pdb
 C:\Users\juanh\Documents\Coding\CSVData\CSVData\obj\Debug\CSVData.frmCSVDB.resources
+D:\Jotaherrera\Coding\CSV-Data\CSVData\bin\Debug\CSVData.exe.config
+D:\Jotaherrera\Coding\CSV-Data\CSVData\bin\Debug\CSVData.exe
+D:\Jotaherrera\Coding\CSV-Data\CSVData\bin\Debug\CSVData.pdb
+D:\Jotaherrera\Coding\CSV-Data\CSVData\obj\Debug\CSVData.csproj.AssemblyReference.cache
+D:\Jotaherrera\Coding\CSV-Data\CSVData\obj\Debug\CSVData.csproj.SuggestedBindingRedirects.cache
+D:\Jotaherrera\Coding\CSV-Data\CSVData\obj\Debug\CSVData.frmCSVDB.resources
+D:\Jotaherrera\Coding\CSV-Data\CSVData\obj\Debug\CSVData.Properties.Resources.resources
+D:\Jotaherrera\Coding\CSV-Data\CSVData\obj\Debug\CSVData.csproj.GenerateResource.cache
+D:\Jotaherrera\Coding\CSV-Data\CSVData\obj\Debug\CSVData.csproj.CoreCompileInputs.cache
+D:\Jotaherrera\Coding\CSV-Data\CSVData\obj\Debug\CSVData.exe
+D:\Jotaherrera\Coding\CSV-Data\CSVData\obj\Debug\CSVData.pdb
