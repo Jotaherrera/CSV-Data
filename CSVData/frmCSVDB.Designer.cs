@@ -35,6 +35,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.lblPath = new System.Windows.Forms.Label();
             this.btnOpen = new System.Windows.Forms.Button();
+            this.btnOpenDataBase = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCSV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,11 +115,23 @@
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
+            // btnOpenDataBase
+            // 
+            this.btnOpenDataBase.Location = new System.Drawing.Point(11, 429);
+            this.btnOpenDataBase.Margin = new System.Windows.Forms.Padding(2);
+            this.btnOpenDataBase.Name = "btnOpenDataBase";
+            this.btnOpenDataBase.Size = new System.Drawing.Size(155, 40);
+            this.btnOpenDataBase.TabIndex = 7;
+            this.btnOpenDataBase.Text = "Open Database";
+            this.btnOpenDataBase.UseVisualStyleBackColor = true;
+            this.btnOpenDataBase.Click += new System.EventHandler(this.btnOpenDataBase_Click);
+            // 
             // frmCSVDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(762, 488);
+            this.Controls.Add(this.btnOpenDataBase);
             this.Controls.Add(this.lblPath);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSaveLocal);
@@ -146,5 +159,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label lblPath;
         private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.Button btnOpenDataBase;
     }
 }

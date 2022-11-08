@@ -265,5 +265,10 @@ namespace CSVData
         {
             exportData();
         }
+
+        private void btnOpenDataBase_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start($"http://localhost/phpmyadmin/index.php?route=/database/structure&db=dbcsv");
+        }
     }
 }
