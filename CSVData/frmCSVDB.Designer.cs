@@ -40,10 +40,11 @@
             // 
             // rtbCSV
             // 
-            this.rtbCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbCSV.Location = new System.Drawing.Point(170, 36);
+            this.rtbCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbCSV.Location = new System.Drawing.Point(179, 36);
             this.rtbCSV.Margin = new System.Windows.Forms.Padding(2);
             this.rtbCSV.Name = "rtbCSV";
+            this.rtbCSV.ReadOnly = true;
             this.rtbCSV.Size = new System.Drawing.Size(573, 181);
             this.rtbCSV.TabIndex = 0;
             this.rtbCSV.Text = "";
@@ -51,7 +52,7 @@
             // dgvCSV
             // 
             this.dgvCSV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCSV.Location = new System.Drawing.Point(170, 235);
+            this.dgvCSV.Location = new System.Drawing.Point(179, 235);
             this.dgvCSV.Margin = new System.Windows.Forms.Padding(2);
             this.dgvCSV.Name = "dgvCSV";
             this.dgvCSV.RowHeadersWidth = 62;
@@ -61,7 +62,7 @@
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(25, 119);
+            this.btnImport.Location = new System.Drawing.Point(29, 108);
             this.btnImport.Margin = new System.Windows.Forms.Padding(2);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(113, 40);
@@ -71,7 +72,7 @@
             // 
             // btnSaveLocal
             // 
-            this.btnSaveLocal.Location = new System.Drawing.Point(25, 260);
+            this.btnSaveLocal.Location = new System.Drawing.Point(29, 226);
             this.btnSaveLocal.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveLocal.Name = "btnSaveLocal";
             this.btnSaveLocal.Size = new System.Drawing.Size(113, 40);
@@ -82,7 +83,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(25, 330);
+            this.btnDelete.Location = new System.Drawing.Point(29, 285);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(113, 40);
@@ -94,16 +95,16 @@
             // lblPath
             // 
             this.lblPath.AutoSize = true;
-            this.lblPath.Location = new System.Drawing.Point(167, 12);
+            this.lblPath.Location = new System.Drawing.Point(176, 12);
             this.lblPath.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPath.Name = "lblPath";
-            this.lblPath.Size = new System.Drawing.Size(29, 13);
+            this.lblPath.Size = new System.Drawing.Size(32, 13);
             this.lblPath.TabIndex = 6;
-            this.lblPath.Text = "Path";
+            this.lblPath.Text = "Path:";
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(25, 190);
+            this.btnOpen.Location = new System.Drawing.Point(29, 167);
             this.btnOpen.Margin = new System.Windows.Forms.Padding(2);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(113, 40);

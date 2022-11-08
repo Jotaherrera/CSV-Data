@@ -23,6 +23,7 @@ namespace CSVData
 
         private void createDataGrid()
         {
+            dgvCSV.AllowUserToAddRows = true;
             dgvCSV.Rows.Clear();
             dgvCSV.Columns.Clear();
             dgvCSV.Refresh();
@@ -50,35 +51,82 @@ namespace CSVData
 
             StreamReader streamReader = new StreamReader(strFileName);
 
-            while ((line = streamReader.ReadLine()) != null)
+            while (!(string.IsNullOrEmpty(line = streamReader.ReadLine())))
             {
                 if (lineCounter > 0)
                 {
-                    values = line.Split(delimiterChars);
+                    if (!(string.IsNullOrEmpty(line)))
+                    {
+                        values = line.Split(delimiterChars);
 
-                    dgvCSV.Rows.Add(values.ToArray());
+                        dgvCSV.Rows.Add(values.ToArray());
+                    }
                 }
 
                 lineCounter++;
             }
-            streamReader.Close();
+          streamReader.Close();
         }
 
         private void btnSaveLocal_Click(object sender, EventArgs e)
         {
-            try
+            if (dgvCSV.Rows.Count > 0)
             {
-                StreamWriter sw = new StreamWriter(strFileName);
-                sw.Write(rtbCSV.Text);
-                sw.Close();
-                lblPath.Text = strFileName;
-                MessageBox.Show($"File saved", "File status", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                createDataGrid();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"You need to open or create a file first", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dgvCSV.AllowUserToAddRows = false;
+                try
+                {
+                    int columnCount = dgvCSV.Columns.Count;
+                    string columnNames = "";
+                    string[] outputCsv = new string[dgvCSV.Rows.Count + 1];
 
+                    for (int i = 0; i < columnCount; i++)
+                    {
+                        if (!(string.IsNullOrEmpty(dgvCSV.Columns[i].HeaderText.ToString()))){
+
+                            if (i != (columnCount -1))
+                            {
+                                columnNames += dgvCSV.Columns[i].HeaderText.ToString() + ";";
+                            } else
+                            {
+                                columnNames += dgvCSV.Columns[i].HeaderText.ToString();
+                            }
+                        }
+                    }
+
+                    outputCsv[0] += columnNames;
+
+                    for (int i = 1; (i - 1) < dgvCSV.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < columnCount; j++)
+                        {
+                            if (dgvCSV.Rows[i - 1].Cells[j].Value == null)
+                            {
+                                outputCsv[i] += " ;";
+                            }else
+                            {
+                                if (j != (columnCount - 1))
+                                {
+                                    outputCsv[i] += dgvCSV.Rows[i - 1].Cells[j].Value.ToString() + ";";
+                                }
+                                else
+                                {
+                                    outputCsv[i] += dgvCSV.Rows[i - 1].Cells[j].Value.ToString();
+                                }
+                            }
+                        }
+                    }
+
+                    File.WriteAllLines(strFileName, outputCsv, Encoding.UTF8);
+                    lblPath.Text = $"Path: {strFileName}";
+                    MessageBox.Show($"File saved", "File status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    createDataGrid();
+                    rtbCSV.Text = File.ReadAllText(strFileName);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error :" + ex.Message);
+                }
             }
         }
 
@@ -93,13 +141,12 @@ namespace CSVData
                 if ((myStream = openFileDialog.OpenFile()) != null)
                 {
                     strFileName = openFileDialog.FileName;
-                    lblPath.Text = strFileName;
+                    lblPath.Text = $"Path: {strFileName}";
 
                     createDataGrid();
 
                     rtbCSV.Text = File.ReadAllText(strFileName);
                     myStream.Close();
-
                 }
             }
         }
@@ -120,7 +167,7 @@ namespace CSVData
                     myStream.Close();
                     File.Delete(strFileName);
                     strFileName = "";
-                    lblPath.Text = strFileName;
+                    lblPath.Text = $"Path: {strFileName}";
                 }
                 catch (Exception ex)
                 {
