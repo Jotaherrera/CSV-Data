@@ -62,17 +62,18 @@
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(29, 108);
+            this.btnImport.Location = new System.Drawing.Point(29, 256);
             this.btnImport.Margin = new System.Windows.Forms.Padding(2);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(113, 40);
             this.btnImport.TabIndex = 2;
-            this.btnImport.Text = "Import";
+            this.btnImport.Text = "Export to DB";
             this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnSaveLocal
             // 
-            this.btnSaveLocal.Location = new System.Drawing.Point(29, 226);
+            this.btnSaveLocal.Location = new System.Drawing.Point(29, 193);
             this.btnSaveLocal.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveLocal.Name = "btnSaveLocal";
             this.btnSaveLocal.Size = new System.Drawing.Size(113, 40);
@@ -83,7 +84,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(29, 285);
+            this.btnDelete.Location = new System.Drawing.Point(29, 319);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(113, 40);
@@ -104,7 +105,7 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(29, 167);
+            this.btnOpen.Location = new System.Drawing.Point(29, 130);
             this.btnOpen.Margin = new System.Windows.Forms.Padding(2);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(113, 40);

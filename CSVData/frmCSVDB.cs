@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CSVData
@@ -16,9 +12,72 @@ namespace CSVData
         string strFileName;
         Stream myStream;
         char[] delimiterChars = { ';', ',' };
+
         public frmCSVDB()
         {
             InitializeComponent();
+        }
+        private string getTableName()
+        {
+            string distyString = Path.GetFileNameWithoutExtension(strFileName);
+            return new String(distyString.Where(Char.IsLetterOrDigit).ToArray());
+        }
+
+        private string[] getColumns()
+        {
+            string[] columnNames = new string[dgvCSV.Columns.Count];
+            string[] columnNamesClean = new string[columnNames.Length];
+
+            for (int i = 0; i < dgvCSV.Columns.Count; i++)
+            {
+                if (!(string.IsNullOrEmpty(dgvCSV.Columns[i].HeaderText.ToString())))
+                {
+                    columnNames[i] += dgvCSV.Columns[i].HeaderText.ToString();
+                }
+            }
+
+            for (int i = 0; i < columnNames.Length; i++)
+            {
+                columnNamesClean[i] += new String(columnNames[i].Where(Char.IsLetterOrDigit).ToArray());
+            }
+
+            return columnNamesClean;
+        }
+        private void exportData()
+        {
+            try
+            {
+                string[] columnNames = getColumns();
+
+                MySqlConnection conn = new MySqlConnection($"SERVER= localhost; PORT=3308; DATABASE=dbcsv; USERID=root");
+
+                conn.Open();
+
+                string fileName = getTableName();
+
+                string dropTableQuery = $"DROP TABLE IF EXISTS {fileName};";
+                MySqlCommand cmdDrop = new MySqlCommand(dropTableQuery, conn);
+                cmdDrop.ExecuteNonQuery();
+                string createQuery = $"CREATE TABLE {fileName} ({columnNames[0]}  VARCHAR(50));";
+                MySqlCommand cmdCreate = new MySqlCommand(createQuery, conn);
+                cmdCreate.ExecuteNonQuery();
+
+                for (int i = 1; i < columnNames.Length; i++)
+                {
+                    string alterQuery = $"ALTER TABLE {fileName} ADD {columnNames[i]} VARCHAR (50);";
+                    MySqlCommand cmdAlter = new MySqlCommand(alterQuery, conn);
+                    cmdAlter.ExecuteNonQuery();
+                }
+
+                conn.Close();
+
+                MessageBox.Show($"Data exported successfully to the data base.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
         }
 
         private void createDataGrid()
@@ -65,7 +124,7 @@ namespace CSVData
 
                 lineCounter++;
             }
-          streamReader.Close();
+            streamReader.Close();
         }
 
         private void btnSaveLocal_Click(object sender, EventArgs e)
@@ -81,12 +140,13 @@ namespace CSVData
 
                     for (int i = 0; i < columnCount; i++)
                     {
-                        if (!(string.IsNullOrEmpty(dgvCSV.Columns[i].HeaderText.ToString()))){
-
-                            if (i != (columnCount -1))
+                        if (!(string.IsNullOrEmpty(dgvCSV.Columns[i].HeaderText.ToString())))
+                        {
+                            if (i != (columnCount - 1))
                             {
                                 columnNames += dgvCSV.Columns[i].HeaderText.ToString() + ";";
-                            } else
+                            }
+                            else
                             {
                                 columnNames += dgvCSV.Columns[i].HeaderText.ToString();
                             }
@@ -102,7 +162,8 @@ namespace CSVData
                             if (dgvCSV.Rows[i - 1].Cells[j].Value == null)
                             {
                                 outputCsv[i] += " ;";
-                            }else
+                            }
+                            else
                             {
                                 if (j != (columnCount - 1))
                                 {
@@ -175,6 +236,11 @@ namespace CSVData
 
                 }
             }
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            exportData();
         }
     }
 }
