@@ -58,6 +58,7 @@ namespace CSVData
                 string dropTableQuery = $"DROP TABLE IF EXISTS {fileName};";
                 MySqlCommand cmdDrop = new MySqlCommand(dropTableQuery, conn);
                 cmdDrop.ExecuteNonQuery();
+
                 string createQuery = $"CREATE TABLE {fileName} ({columnNames[0]}  VARCHAR(50));";
                 MySqlCommand cmdCreate = new MySqlCommand(createQuery, conn);
                 cmdCreate.ExecuteNonQuery();
@@ -69,9 +70,13 @@ namespace CSVData
                     cmdAlter.ExecuteNonQuery();
                 }
 
-                conn.Close();
+                DialogResult result = MessageBox.Show("Data exported successfully to the data base. Do you want to open phpMyAdmin to check the data?", "Data Export", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    System.Diagnostics.Process.Start($"http://localhost/phpmyadmin/index.php?route=/sql&pos=0&db=dbcsv&table={fileName}");
+                }
 
-                MessageBox.Show($"Data exported successfully to the data base.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
 
             }
             catch (Exception ex)
