@@ -9,14 +9,15 @@ namespace CSVData
 {
     public partial class frmCSVDB : Form
     {
-        string strFileName;
-        Stream myStream;
-        char[] delimiterChars = { ';', ',' };
+        private string strFileName;
+        private Stream myStream;
+        private char[] delimiterChars = { ';', ',' };
 
         public frmCSVDB()
         {
             InitializeComponent();
         }
+
         private string getTableName()
         {
             string distyString = Path.GetFileNameWithoutExtension(strFileName);
@@ -43,6 +44,7 @@ namespace CSVData
 
             return columnNamesClean;
         }
+
         private void exportData()
         {
             try
@@ -70,14 +72,32 @@ namespace CSVData
                     cmdAlter.ExecuteNonQuery();
                 }
 
+                for (int i = 0; i < dgvCSV.Rows.Count - 1; i++)
+                {
+                    string insertQuery = $"INSERT INTO {fileName} VALUES (";
+
+                    for (int j = 0; j < columnNames.Length; j++)
+                    {
+                        if (j == (columnNames.Length - 1))
+                        {
+                            insertQuery += $"'{dgvCSV.Rows[i].Cells[j].Value}');";
+                        }
+                        else
+                        {
+                            insertQuery += $"'{dgvCSV.Rows[i].Cells[j].Value}',";
+                        }
+                    }
+
+                    MySqlCommand cmdInsert = new MySqlCommand(insertQuery, conn);
+                    cmdInsert.ExecuteNonQuery();
+                }
+
                 DialogResult result = MessageBox.Show("Data exported successfully to the data base. Do you want to open phpMyAdmin to check the data?", "Data Export", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
                     System.Diagnostics.Process.Start($"http://localhost/phpmyadmin/index.php?route=/sql&pos=0&db=dbcsv&table={fileName}");
                 }
-
                 conn.Close();
-
             }
             catch (Exception ex)
             {
@@ -187,7 +207,6 @@ namespace CSVData
                     MessageBox.Show($"File saved", "File status", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     createDataGrid();
                     rtbCSV.Text = File.ReadAllText(strFileName);
-
                 }
                 catch (Exception ex)
                 {
@@ -238,7 +257,6 @@ namespace CSVData
                 catch (Exception ex)
                 {
                     MessageBox.Show($"You have not opened any file. Open a file and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
             }
         }
