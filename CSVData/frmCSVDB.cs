@@ -50,6 +50,13 @@ namespace CSVData
             try
             {
                 string[] columnNames = getColumns();
+                MySqlConnection connMyAdmin = new MySqlConnection($"SERVER= localhost; PORT=3308; USERID=root");
+
+                connMyAdmin.Open();
+                string queryMyAdmin = $"CREATE DATABASE IF NOT EXISTS dbcsv";
+                MySqlCommand cmdMyAdmin = new MySqlCommand(queryMyAdmin, connMyAdmin);
+                cmdMyAdmin.ExecuteNonQuery();
+                connMyAdmin.Close();
 
                 MySqlConnection conn = new MySqlConnection($"SERVER= localhost; PORT=3308; DATABASE=dbcsv; USERID=root");
 
